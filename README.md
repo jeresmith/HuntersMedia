@@ -18,15 +18,7 @@ Social Networking mobile app similar to Instagram in React Native.
 
 ## Features
 
-* Authentication using JWT.
-* Forgot password.
-* Edit your profile.
-* Follow / Unfollow users.
-* create / edit / delete posts.
-* create / delete comments.
-* Like / Unlike posts.
-* Personal chat with users.
-* Notifications on new messages.
+
 
 ## Demo
 
