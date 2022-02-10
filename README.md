@@ -1,5 +1,5 @@
  <div align="center">
-<img src="assets/buildericon.png" style="border-radius:50%;border:1px solid black;" alt="SocialApp-rn" width="70">
+<img src="assets/deetIcon.png" style="border-radius:50%;border:1px solid black;" alt="SocialApp-rn" width="70">
 
 # Hunting Grounds
 
