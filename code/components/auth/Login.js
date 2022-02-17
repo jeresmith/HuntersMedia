@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { View, Button, TextInput} from 'react-native';
 
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import firebase from 'firebase/compat';
+
 
 export class Login extends Component {
     constructor(props)
@@ -30,11 +29,11 @@ export class Login extends Component {
     return (
       <View>
           <TextInput
-            placeHolder="username"
+            placeholder="username"
             onChangeText={(username) => this.setState( {username})}
             />
             <TextInput
-            placeHolder="email"
+            placeholder="email"
             onChangeText={(email) => this.setState( {email})}
             />
             <Button
