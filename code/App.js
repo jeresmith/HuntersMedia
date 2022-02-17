@@ -4,6 +4,7 @@ import { StyleSheet, Button, Text, View } from 'react-native';
 
 import firebase from "firebase/compat";
 
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyCzJmTKRNyd2XdEtzq5TE2QZ2kW6Nf-rxo",
@@ -12,13 +13,10 @@ const firebaseConfig = {
     storageBucket: "huntinggrounds-501e8.appspot.com",
     messagingSenderId: "177288709363",
     appId: "1:177288709363:web:bde6daf7a3d83a806b6386",
-    measurementId: "G-G0M7HXJRBJ"
+    measurementId: "G-G0M7HXJRBJ",
   };
+  firebase.initializeApp(firebaseConfig);
 
-if(firebase.app.length === 0)
-{
-    firebase.initializeApp(firebaseConfig);
-}
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
