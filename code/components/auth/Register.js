@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { View, Button, TextInput} from 'react-native';
 
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import firebase from 'firebase/compat';
+
 
 export class Register extends Component {
     constructor(props)
@@ -32,22 +31,22 @@ export class Register extends Component {
       <View>
           <TextInput
             placeHolder="username"
-            onChangeText={(username) => this.set( {username})}
-            />
+            onChangeText={(username) => this.setState( {username})}
+          />
             <TextInput
             placeHolder="email"
             onChangeText={(email) => this.setState( {email})}
-            />
+          />
             <TextInput
             placeHolder="password"
             secureTextentry = {true}
             onChangeText={(password) => this.setState( {password})}
-            />
+          />
 
-            <Button
-                onPress={() => this.onSignUp()}
-                title = "Sign Up"
-            />
+          <Button
+              onPress={() => this.onSignUp()}
+              title = "Sign Up"
+          />
       </View>
     )
   }

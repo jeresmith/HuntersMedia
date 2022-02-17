@@ -1,10 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Button, Text, View } from 'react-native';
 
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import firebase from "firebase/compat";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -17,9 +15,9 @@ const firebaseConfig = {
     measurementId: "G-G0M7HXJRBJ"
   };
 
-if(firebase.apps.length === 0)
+if(firebase.app.length === 0)
 {
-    firebase.initializeApp(firebaseConfig)
+    firebase.initializeApp(firebaseConfig);
 }
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -40,5 +38,5 @@ export default function App() {
                 <Stack.Screen name= "Login" component={LoginScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
-    )
+    );
 }
