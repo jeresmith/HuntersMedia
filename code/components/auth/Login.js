@@ -29,12 +29,12 @@ export class Login extends Component {
     return (
       <View>
           <TextInput
-            placeholder="username"
-            onChangeText={(username) => this.setState( {username})}
-            />
-            <TextInput
             placeholder="email"
             onChangeText={(email) => this.setState( {email})}
+            />
+            <TextInput
+            placeholder="password"
+            onChangeText={(password) => this.setState( {password})}
             />
             <Button
                 onPress={() => this.onSignUp()}
