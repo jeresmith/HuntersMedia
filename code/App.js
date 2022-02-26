@@ -35,6 +35,7 @@ import RegisterScreen from './components/auth/Register';
 import LoginScreen from './components/auth/Login';
 
 import MainScreen from './components/Main'
+import AddScreen  from './components/main/Add'
 
 const Stack = createStackNavigator();
 
@@ -70,7 +71,7 @@ export class App extends Component {
       {
         return (
             <View style = {{ flex: 1, justifyContent: 'center'}}>
-                <Text>Loaded</Text >
+                <Text>Loading</Text >
             </View>
         )
       }
@@ -91,6 +92,7 @@ export class App extends Component {
             <NavigationContainer>
                 <Stack.Navigator initialRouteName="Main">
                     <Stack.Screen name= "Main" component={MainScreen} options={{HeaderShown: false}} />
+                    <Stack.Screen name= "Add" component={AddScreen} />
                 </Stack.Navigator> 
             </NavigationContainer>       
 
