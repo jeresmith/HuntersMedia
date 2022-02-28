@@ -11,7 +11,7 @@ import { View, TextInput, Image, Button} from 'react-native';
 //import 'firebase/compat/firestore';
 import firebase from 'firebase/compat';
 require("firebase/firestore")
-require("firebase/firebase-storage")
+//require("firebase/firebase-storage")
 
 
 export default function Save(props) 
@@ -32,7 +32,7 @@ export default function Save(props)
         const task = firebase
             .storage()
             .ref
-            child(childPath)
+            .child(childPath)
             .put(blob);//tells firebase with file it is and start the upload process
 
         
