@@ -18,6 +18,7 @@ import FeedScreen  from './main/Feed'
 import ProfileScreen  from './main/Profile'
 
 import { version } from 'react-dom';
+import MapPage from './main/MapPage';
 
 
 export class Main extends Component {
@@ -51,6 +52,12 @@ export class Main extends Component {
              options={{ 
                  tabBarIcon: ({color, size}) =>(
                     <MaterialCommunityIcons name= "account-circle" color= {color} size = {26} />
+                 ),
+             }}/>
+             <Tab.Screen name="MapPage" component = {MapPage}
+             options={{ 
+                 tabBarIcon: ({color, size}) =>(
+                    <MaterialCommunityIcons name= "map" color= {color} size = {26} />
                  ),
              }}/>
         </Tab.Navigator>
