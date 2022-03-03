@@ -5,17 +5,17 @@ import React, {useState} from 'react'
 import { View, TextInput, Image, Button} from 'react-native';
 
 //firebase
-//import firebase from 'firebase';
+import firebase from 'firebase/compat';
 //import firebase from 'firebase/compat/app';
 //import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
-import firebase from 'firebase/compat';
- 
-import 'firebase/compat/storage'; 
-require("firebase/firestore")
-//require("firebase/firebase-storage")
+//import 'firebase/compat/firestore';
+//import firebase from 'firebase';
+//import { ref as storageRef, StorageError} from 'firebase/storage'; 
+//import 'firebase/compat/storage'; 
+//import 'firebase/firebase-storage';
 
 
+import { getStorage, ref } from "firebase/storage";
 
 export default function Save(props) 
 {
@@ -39,9 +39,14 @@ export default function Save(props)
             .put(blob);//tells firebase with file it is and start the upload process
 
         
-        const taskProgress = snapshot => {
+        const taskProgress = (snapshot) => {
             console.log(`transferred: ${snapshot.bytesTransferred}`)
         }
+
+        const taskError = snapshot => {
+            console.log(snapshot)
+        }
+
 
         const taskCompeleted = ()  => {
             task.snapshot.ref.getDownloadURL().then((snapshot) => {
@@ -50,12 +55,8 @@ export default function Save(props)
             })
         }
 
-        const taskError = snapshot => {
-            console.log(snapshot)
-        }
-
         //actives task on state change using above task functions
-        task.on("state_changed", taskProgress, taskError, taskCompeleted);
+        task.on('state_changed', taskProgress, taskError, taskCompeleted);
     }
 
     const savePostData = (downloadURL) => {
