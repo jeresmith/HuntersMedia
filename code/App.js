@@ -94,8 +94,8 @@ export class App extends Component {
             <NavigationContainer>
                 <Stack.Navigator initialRouteName="Main">
                     <Stack.Screen name= "Main" component={MainScreen} options={{HeaderShown: false}} />
-                    <Stack.Screen name= "Add" component={AddScreen} navigation={this.props.navigation} />
-                    <Stack.Screen name= "Save" component={SaveScreen}  navigation={this.props.navigation}/>
+                    <Stack.Screen name= "Add" component={AddScreen} navigation={this.props.navigation}  />
+                    <Stack.Screen name= "Save" component={SaveScreen} navigation={this.props.navigation}/>
                 </Stack.Navigator> 
             </NavigationContainer>       
 

@@ -1,68 +1,88 @@
+
+//save image post
+
 import React, {useState} from 'react'
-import {View, TextInput, Image, Button} from 'react-native'
+import { View, TextInput, Image, Button} from 'react-native';
 
-import firebase from 'firebase/compat'
-import { getFirestore } from "firebase/firestore"
-import { requestMicrophonePermissionsAsync } from 'expo-camera'
-import { NavigationContainer } from '@react-navigation/native'
+//firebase
+//import firebase from 'firebase';
+//import firebase from 'firebase/compat/app';
+//import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import firebase from 'firebase/compat';
+//import { ref as storageRef, StorageError} from 'firebase/storage'; 
+import 'firebase/compat/storage'; 
+//import 'firebase/firebase-storage';
+require("firebase/firestore")
+//require("firebase/firebase-storage")
 
-require("firebase/compat/firestore")
-require("firebase/compat/storage")
 
-export default function Save(props, {navigation} ) {
-    console.log(props.route.params.image)
+
+export default function Save(props) 
+{
     const [caption, setCaption] = useState("")
 
     const uploadImage = async () => {
         const uri = props.route.params.image;
         const childPath = `post/${firebase.auth().currentUser.uid}/${Math.random.toString(36)}`;
+        console.log(childPath)
 
-        const response = await fetch(uri);
-        const blob = await response.blob();
+        const reponse = await fetch(uri);//fetch image and get data form image
+        //create blob of uri 
+        //pass along to firestore 
+        //and then upload image 
+        const blob = await reponse.blob();
 
         const task = firebase
             .storage()
             .ref()
             .child(childPath)
-            .put(blob);
+            .put(blob);//tells firebase with file it is and start the upload process
+
+        
         const taskProgress = snapshot => {
             console.log(`transferred: ${snapshot.bytesTransferred}`)
         }
-        const taskCompleted = () => {
+
+        const taskCompeleted = ()  => {
             task.snapshot.ref.getDownloadURL().then((snapshot) => {
-                savePostData(snapshot)
+                savePostData(snapshot);
                 console.log(snapshot)
             })
         }
+
         const taskError = snapshot => {
             console.log(snapshot)
         }
 
-        task.on("state_changed", taskProgress,taskError, taskCompleted)
-
+        //actives task on state change using above task functions
+        task.on("state_changed", taskProgress, taskError, taskCompeleted);
     }
+
     const savePostData = (downloadURL) => {
         firebase.firestore()
-        .collection('posts')
-        .doc(firebase.auth().currentUser.uid)
-        .collection("userPost")
-        .add({
-            downloadURL,
-            caption,
-            creation: firebase.firestore.FieldValue.serverTimestamp()
-        }).then((function ()  {
-            props.navigation.popToTop()
-        }))
+            .collection('posts')
+            .doc(firebase.auth().currentUser.uid)
+            .collection("userPosts")
+            .add({
+                downloadURL,
+                caption,
+                creation: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then((function () {
+                props.navigation.popToTop()
+            }))
     }
+        
   return (
     <View style={{flex: 1}}>
-        
-        <Image source = {{uri: props.route.params.image}}/>
+        <Image source={{uri: props.route.params.image}}/>
         <TextInput
-            placeholder='Create Caption...'
+            placeholder="Write a Caption. . ."
             onChangeText={(caption) => setCaption(caption)}
         />
-        <Button title="Save" onPress={()=> uploadImage()}/>
+
+        <Button title="Save" onPress={() => uploadImage()}/>
     </View>
   )
 }
