@@ -10,9 +10,8 @@ import { View, TextInput, Image, Button} from 'react-native';
 //import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import firebase from 'firebase/compat';
-//import { ref as storageRef, StorageError} from 'firebase/storage'; 
+ 
 import 'firebase/compat/storage'; 
-//import 'firebase/firebase-storage';
 require("firebase/firestore")
 //require("firebase/firebase-storage")
 
@@ -24,7 +23,7 @@ export default function Save(props)
 
     const uploadImage = async () => {
         const uri = props.route.params.image;
-        const childPath = `post/${firebase.auth().currentUser.uid}/${Math.random.toString(36)}`;
+        const childPath = `post/${firebase.auth().currentUser.uid}/${Math.random().toString(36)}`;
         console.log(childPath)
 
         const reponse = await fetch(uri);//fetch image and get data form image
