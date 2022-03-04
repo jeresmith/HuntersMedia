@@ -42,3 +42,10 @@ export function fetchUserPosts()
         })
     })
 }
+
+
+/*export function fetchUsersData(uid){
+    return((dispatch, getState) => {
+
+    })
+}*/
