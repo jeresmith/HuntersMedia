@@ -31,7 +31,7 @@ export class Login extends Component {
           <Text style = {styles.title}>Hunting Grounds</Text>
           <Image
           style = {styles.image}
-          source={require("C:\Users\OWNER\Documents\GitHub\HuntersMedia\code\assets\adaptive-icon.png")}>
+          source={require("C:/Users/OWNER/Documents/GitHub/HuntersMedia/code/assets/adaptive-icon.png")}>
           </Image>
           <View style = {styles.inputBox}>
             <TextInput
@@ -80,5 +80,4 @@ const styles = StyleSheet.create({
 })
 
 export default Login
-
 
