@@ -11,7 +11,7 @@ import firebase from 'firebase/compat';
 //import 'firebase/compat/firestore';
 //import firebase from 'firebase';
 //import { ref as storageRef, StorageError} from 'firebase/storage'; 
-//import 'firebase/compat/storage'; 
+import 'firebase/compat/storage'; 
 //import 'firebase/firebase-storage';
 
 

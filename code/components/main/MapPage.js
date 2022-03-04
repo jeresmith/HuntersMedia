@@ -22,55 +22,60 @@ export class MapPage extends Component {
         zoomControlEnabled={true}
         loadingEnabled={true}
         moveOnMarkerPress={true}
-        clusterColor={'red'}
+        clusterColor={'#006400'}
       >
         <Marker coordinate = {{latitude: 47.00,longitude: -120.500}}
-         pinColor = {""} // any color
+         pinColor = {"#006400"} // any color
          title={"User: lanceTest"}
          description={"test 1" }
          />
          <Marker coordinate = {{latitude: 47.005,longitude: -120.500}}
-         pinColor = {"red"} // any color
+         pinColor = {"#006400"} // any color
          title={"User: lanceTest"}
          description={"test 2" }
          />
          <Marker coordinate = {{latitude: 47.02,longitude: -120.500}}
-         pinColor = {"red"} // any color
+         pinColor = {"#006400"} // any color
          title={"User: lanceTest"}
          description={"test 3" }
          />
          <Marker coordinate = {{latitude: 47.01,longitude: -120.500}}
-         pinColor = {"red"} // any color
+         pinColor = {"#006400"} // any color
          title={"User: lanceTest"}
          description={"test 4" }
          />
          <Marker coordinate = {{latitude: 46.5971,longitude: -120.34226}}
-         pinColor = {"red"} // any color
+         pinColor = {"#006400"} // any color
          title={"User: lanceTest"}
          description={"test 5" }
          />
          <Marker coordinate = {{latitude: 46.58,longitude: -120.34226}}
-         pinColor = {"red"} // any color
+         pinColor = {"#006400"} // any color
          title={"User: lanceTest"}
          description={"test 6" }
          />
         <Marker coordinate = {{latitude: 46.6,longitude: -120.34226}}
-         pinColor = {"red"} // any color
+         pinColor = {"#006400"} // any color
          title={"User: lanceTest"}
          description={"test 7" }
          />
          <Marker coordinate = {{latitude: 47.0,longitude: -120.6}}
-         pinColor = {"red"} // any color
+         pinColor = {"#006400"} // any color
          title={"User: lanceTest"}
          description={"test 8" }
          />
          <Marker coordinate = {{latitude: 47.01,longitude: -120.61}}
-         pinColor = {"red"} // any color
+         pinColor = {"#006400"} // any color
          title={"User: lanceTest"}
          description={"test 9" }
          />
          <Marker coordinate = {{latitude: 47.06,longitude: -120.58}}
-         pinColor = {"red"} // any color
+         pinColor = {"#006400"} // any color
+         title={"User: lanceTest"}
+         description={"test 10" }
+         />
+         <Marker coordinate = {{latitude: 47.07,longitude: -120.57}}
+         pinColor = {"#006400"} // any color
          title={"User: lanceTest"}
          description={"test 10" }
          />
