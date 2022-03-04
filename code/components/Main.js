@@ -3,8 +3,9 @@ import { StyleSheet, Button, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialIcons'
+import firebase from 'firebase/compat'
 
-import { fetchUser, fetchUserPosts } from '../redux/actions/index';
+import { fetchUser, fetchUserPosts, fetchUserFollowing } from '../redux/actions/index';
 
 
 
@@ -16,6 +17,7 @@ const EmptyScreen = () => {
 }
 import FeedScreen  from './main/Feed'
 import ProfileScreen  from './main/Profile'
+import SearchScreen  from './main/Search'
 
 import { version } from 'react-dom';
 import MapPage from './main/MapPage';
@@ -25,6 +27,7 @@ export class Main extends Component {
     componentDidMount() {
         this.props.fetchUser();
         this.props.fetchUserPosts();
+        this.props.fetchUserFollowing();
 
     }
   render() {
@@ -35,6 +38,12 @@ export class Main extends Component {
              options={{ 
                  tabBarIcon: ({color, size}) =>(
                     <MaterialCommunityIcons name= "home" color= {color} size = {26} />
+                 ),
+             }}/>
+             <Tab.Screen name="Search" component = {SearchScreen} navigation = {this.props.navigation}
+             options={{ 
+                 tabBarIcon: ({color, size}) =>(
+                    <MaterialCommunityIcons name= "search" color= {color} size = {26} />
                  ),
              }}/>
              <Tab.Screen name="AddContainer" component = {EmptyScreen}
@@ -50,6 +59,11 @@ export class Main extends Component {
                  ),
              }}/>
              <Tab.Screen name="Profile" component = {ProfileScreen}
+              listeners = {({navigation}) =>({
+                tabPress: event =>{
+                    event.preventDefault();
+                    navigation.navigate("Profile", {uid: firebase.auth(). currentUser.uid})
+                }})}
              options={{ 
                  tabBarIcon: ({color, size}) =>(
                     <MaterialCommunityIcons name= "account-circle" color= {color} size = {26} />
@@ -70,7 +84,7 @@ export class Main extends Component {
 const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser
 })
-const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserPosts}, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserPosts, fetchUserFollowing}, dispatch);
 
 
 
