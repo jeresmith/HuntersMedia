@@ -19,7 +19,7 @@ function Feed(props) {
         {
           const user = props.users.find(el => el.uid === props.following[i]);
           if(user != undefined){
-            posts =[...posts, user.posts]
+            posts =[...posts, ...user.posts]
           }
         }
 
@@ -44,7 +44,7 @@ function Feed(props) {
                   renderItem={({item}) => 
                   (
                       <View style={styles.containerImage}>
-                          <Text style={styles.container}>{item.user.name}</Text>
+                          <Text style={styles.container}>{item.user.username}</Text>
                           <Image
                             style={styles.image}
                             source={{uri: item.downloadURL}}
