@@ -9,7 +9,7 @@ export default function Landing({navigation}) {
       <Text style = {styles.title}>Hunting Grounds</Text>
         <Image
         style = {styles.image}
-        source={require("C:/Users/OWNER/Documents/GitHub/HuntersMedia/code/assets/adaptive-icon.png")}>
+        source={require("../../assets/adaptive-icon.png")}>
         </Image>
         <Text style = {{textAlign: 'center', marginBottom: 10, fontSize: 20}}>New to Hunting Grounds?</Text>
         <Button
