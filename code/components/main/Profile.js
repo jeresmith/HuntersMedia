@@ -12,23 +12,50 @@ function Profile(props) {
 
     useEffect(() => {
         const {currentUser, posts } = props; 
-        console.log({currentUser, posts })
+        //console.log({currentUser, posts })
 
         if (props.route.params.uid === firebase.auth().currentUser.uid) {
-            
             setUser(currentUser)
             setUserPosts(posts)
-
         }
+        else
+        {
+            firebase.firestore()
+                .collection("users")
+                .doc(props.route.params.uid)
+                .get() //get dispatch
+                .then((snapshot) => {
+                    if(snapshot.exists){
+                        setUser(snapshot.data());
+                    }
+                    else{
+                        console.log('does not exist')
+                    }
+                })
+      
+            firebase.firestore()
+                .collection("posts")
+                .doc(props.route.params.uid)
+                .collection("userPosts")
+                .orderBy("creation", "asc")
+                .get() 
+                .then((snapshot) => {
+                    let posts = snapshot.docs.map(doc => { //array of posts
+                        const data = doc.data();
+                        const id = doc.id;
+                        return { id, ...data }
+                    })
+                    setUserPosts(posts)
+                })
+          }
 
         if(props.following.indexOf(props.route.params.uid) > -1) {
                 setFollowing(true); 
-
         }
-
         else {
             setFollowing(false); 
         }
+
     }, [props.route.params.uid, props.following])
 
     const onFollow = () => {
@@ -39,6 +66,7 @@ function Profile(props) {
         .doc(props.route.params.uid)
         .set({})
     }
+
     const onUnfollow = () => {
         firebase.firestore()
         .collection("following")
@@ -47,76 +75,36 @@ function Profile(props) {
         .doc(props.route.params.uid)
         .delete()
     }
+
     if (user === null) { 
 
         return <View/> 
     }
-    else { 
-        firebase.firestore()
-            .collection("users")
-            .doc(props.route.params.uid)
-            .get()
-            .then((snapshot) =>{
-                if (snapshot.exists)
-                {
-                    
-                    setUser(snapshot.data()); 
-                }
-                else {
-                    console.log("User does not exist");
-                }
-        })
 
-        firebase.firestore()
-        .collection("posts")
-        .doc(props.route.params.uid)
-        .collection("userPosts")
-        .orderBy("creation", "asc")
-        .get()
-        .then((snapshot) =>{
-           let posts = snapshot.docs.map(doc => {
-               const data = doc.data();
-               const id = doc.id; 
-               return{id, ...data}
-           })
-           setUserPosts(posts)
-           
-           
-        })
-
-    }
 
     return (
-        <ScrollView>
-            <View style = {styles.container}></View>
-            <View style={styles.topBar}></View>
-            <View style = {styles.row}>
-                <Image
-                style = {styles.image}
-                source={require("../../assets/adaptive-icon.png")}>
-                </Image>
-                <View style={{paddingTop: 20, paddingRight: 10, paddingLeft: 200}}>
-                    
-                </View>
-            </View>
+        <View style={styles.container}>
+            
             <View style = {styles.userInfo}>
-            <Text> {user.username} </Text>
-            <Text> {user.email} </Text>
+                <Text> {user.username} </Text>
+                <Text> {user.email} </Text>
+            <View/>
 
             {props.route.params.uid !== firebase.auth().currentUser.uid ? (
                 <View> 
                     {following ? (
-                        <Button>
+                        <Button 
                             title = "Following"
                             onPress = {() => onUnfollow()}
-                            color = '#D2B48C' 
+                            color = '#D2B48C'>
+                            
                         </Button>
                     ) : 
                     (
-                        <Button>
+                        <Button 
                             title = "Follow"
                             onPress = {() => onFollow()}
-                            color = '#D2B48C'
+                            color = '#D2B48C'>  
                         </Button>
                     )}
                 </View>
@@ -132,25 +120,22 @@ function Profile(props) {
                         <View
                             style = {styles.containerImage}>
 
-                        <Image
-                        style = {styles.image2}
-                            source = {{uri: item.downloadURL}}
-
-                        />
+                            <Image
+                                style = {styles.image2}
+                                source = {{uri: item.downloadURL}}
+                            />
                         </View>
                     )}
-                
                 />
 
             </View>
-      </ScrollView>
+      </View>
       
     )
 }
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
-        marginTop: 40 
     },
     containerInfo: {
         margin: 20
@@ -199,6 +184,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#90EE90'
       }
 })
+
 const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser,
     posts: store.userState.posts,

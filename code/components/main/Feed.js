@@ -7,6 +7,7 @@ import {StyleSheet, View, Text, Image, FlatList, Button, ScrollView} from 'react
 import {connect} from 'react-redux'
 
 
+
 function Feed(props) {
     const [posts, setPosts] = useState([]); 
     
@@ -34,41 +35,27 @@ function Feed(props) {
     
 
     return (
-      <ScrollView>
-         <View style={styles.topBar}></View>
-        <View style = {styles.row}>
-          <Image
-          style = {styles.image}
-          source={require("../../assets/adaptive-icon.png")}>
-          </Image>
-          <View style={{paddingTop: 20, paddingRight: 10, paddingLeft: 200}}>
-            <Button
-            onPress={() => this.logOut()}
-            title = "Log Out"
-            style = {styles.button}
-            color = '#D2B48C'
-            />
-          </View>
-        </View>
-        <View style={{paddingTop: 50}}></View>
-
-        <View style={styles.containerGallery}>
-            <FlatList
-              numColumns={1}
-              horizontal={false}
-              data={posts}
-              renderItem={({item}) => (
-                  <View style={styles.containerImage}>
-                      <Text style={styles.container}>{item.user.name}</Text>
-                      <Image
-                        style={styles.image}
-                        source={{uri: item.downloadURL}}
-                      />
-                  </View>
-                )}
-            />
-        </View> 
-      </ScrollView>
+      <View style={styles.container}>
+          <View style={styles.containerGallery}>
+              <FlatList
+                  numColumns={1}
+                  horizontal={false}
+                  data={posts}
+                  renderItem={({item}) => 
+                  (
+                      <View style={styles.containerImage}>
+                          <Text style={styles.container}>{item.user.name}</Text>
+                          <Image
+                            style={styles.image}
+                            source={{uri: item.downloadURL}}
+                          />
+                      </View>
+                  )}
+              />
+          </View> 
+      </View>
+         
+      
     )
 }
 
@@ -109,6 +96,9 @@ const styles = StyleSheet.create({
     containerImage:{
       flex: 1/3
     },
+    container: {
+      flex: 1,
+    }
 
 })
 

@@ -37,7 +37,7 @@ export function fetchUserPosts()
                const id = doc.id; 
                return{id, ...data}
            })
-           console.log(posts)
+           //console.log(posts)
            dispatch({type: USER_POSTS_STATE_CHANGE, posts })
         })
     })
@@ -52,12 +52,11 @@ export function fetchUserFollowing()
         .collection("userFollowing")
         .onSnapshot((snapshot) =>{
            let following = snapshot.docs.map(doc => {
-               const data = doc.data();
                const id = doc.id; 
                return id
            })
-           
            dispatch({type: USER_FOLLOWING_STATE_CHANGE, following })
+
            for(let i = 0; i < following.length; i++){
                dispatch(fetchUsersData(following[i]));
            }
@@ -116,8 +115,10 @@ export function fetchUsersFollowingPosts(uid)
                const id = doc.id; 
                return{id, ...data, user}
            })
-           console.log(posts)
+           //console.log(posts)
            dispatch({type: USERS_POSTS_STATE_CHANGE, posts, uid })
+           console.log("I AM HERE!!!!")
+            //console.log(getState())
         })
     })
 }

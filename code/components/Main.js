@@ -7,8 +7,6 @@ import firebase from 'firebase/compat'
 
 import { fetchUser, fetchUserPosts, fetchUserFollowing } from '../redux/actions/index';
 
-
-
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -34,7 +32,7 @@ export class Main extends Component {
       
     return (
         <Tab.Navigator initialRouteName='Feed' labeled = {false}>
-            <Tab.Screen name="Feed" component = {FeedScreen}
+            <Tab.Screen key={Date.now()} name="Feed" component = {FeedScreen}
              options={{ 
                  tabBarIcon: ({color, size}) =>(
                     <MaterialCommunityIcons name= "home" color= {color} size = {26} />
@@ -62,7 +60,7 @@ export class Main extends Component {
               listeners = {({navigation}) =>({
                 tabPress: event =>{
                     event.preventDefault();
-                    navigation.navigate("Profile", {uid: firebase.auth(). currentUser.uid})
+                    navigation.navigate("Profile", {uid: firebase.auth().currentUser.uid})
                 }})}
              options={{ 
                  tabBarIcon: ({color, size}) =>(

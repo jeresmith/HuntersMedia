@@ -26,16 +26,17 @@ export default function Search(props) {
     }
     return (
       <View>
-          <TextInput> 
+            <TextInput 
               placeholder = "Type Here..."
-              onChangeText = {(search) => fetchUsers(search)} </TextInput>
+              onChangeText = {(search) => fetchUsers(search)}
+            />
           <FlatList
                 numColumns={1}
                 horizontal = {false}
                 data = {users}
                 renderItem = {({item}) => (
-                    <TouchableOpacity> 
-                        onPress = {() => props.navigation.navigate("Profile", {uid: item.id})}
+                    <TouchableOpacity
+                        onPress = {() => props.navigation.navigate("Profile", {uid: item.id})}> 
                         <Text>{item.username}</Text>
                     </TouchableOpacity>
                     
