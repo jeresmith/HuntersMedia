@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import firebase from 'firebase/compat'
 require('firebase/firestore')
-import {StyleSheet, View, Text, Image, FlatList, Button} from 'react-native';
+import {StyleSheet, View, Text, Image, FlatList, Button, ScrollView} from 'react-native';
 import {connect} from 'react-redux'
 
 
@@ -93,7 +93,7 @@ function Profile(props) {
             <View style = {styles.row}>
                 <Image
                 style = {styles.image}
-                source={require("C:/Users/OWNER/Documents/GitHub/HuntersMedia/code/assets/adaptive-icon.png")}>
+                source={require("../../assets/adaptive-icon.png")}>
                 </Image>
                 <View style={{paddingTop: 20, paddingRight: 10, paddingLeft: 200}}>
                     
