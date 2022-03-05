@@ -85,6 +85,4 @@ const mapStateToProps = (store) => ({
 })
 const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserPosts, fetchUserFollowing, clearData}, dispatch);
 
-
-
 export default connect(mapStateToProps, mapDispatchProps)(Main);
