@@ -79,8 +79,7 @@ const onCommentSend = () => {
                 .add({
                     creator: firebase.auth().currentUser.uid,
                     text
-                })
-                .then((function () {
+                }).then((function () {
                     props.navigation.popToTop()
                 }))
 
@@ -106,7 +105,7 @@ const onCommentSend = () => {
 
         <View>
             <TextInput
-                placeholder='comment..'
+                placeholder='Comment..'
                 onChangeText={(text) => setText(text)} />
                 <Button
                     onPress={() => onCommentSend()}
