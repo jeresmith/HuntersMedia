@@ -80,6 +80,9 @@ const onCommentSend = () => {
                     creator: firebase.auth().currentUser.uid,
                     text
                 })
+                .then((function () {
+                    props.navigation.popToTop()
+                }))
 
 }
 
