@@ -76,6 +76,10 @@ function Profile(props) {
         .delete()
     }
 
+    const onLogout = () => {
+        firebase.auth().signOut();
+    }
+
     if (user === null) { 
 
         return <View/> 
@@ -88,29 +92,36 @@ function Profile(props) {
             <View style = {styles.userInfo}>
                 <Text> {user.username} </Text>
                 <Text> {user.email} </Text>
-            <View/>
+           
 
-            {props.route.params.uid !== firebase.auth().currentUser.uid ? (
-                <View> 
-                    {following ? (
-                        <Button 
-                            title = "Following"
-                            onPress = {() => onUnfollow()}
-                            color = '#D2B48C'>
+                {props.route.params.uid !== firebase.auth().currentUser.uid ? (
+                    <View> 
+                        {following ? (
+                            <Button 
+                                title = "Following"
+                                onPress = {() => onUnfollow()}
+                                color = '#D2B48C'
+                            />
+                                
                             
-                        </Button>
-                    ) : 
-                    (
-                        <Button 
-                            title = "Follow"
-                            onPress = {() => onFollow()}
-                            color = '#D2B48C'>  
-                        </Button>
-                    )}
-                </View>
-            ) : null }
-
+                        ) : 
+                        (
+                            <Button 
+                                title = "Follow"
+                                onPress = {() => onFollow()}
+                                color = '#D2B48C'
+                            />  
+                            
+                        )}
+                    </View>
+                ) : 
+                    <Button 
+                        title = "Logout"
+                        onPress = {() => onLogout()}
+                        color = '#D2B48C'
+                    /> }
             </View>
+
             <View style = {styles.containerGallery}>
                 <FlatList 
                     numColumns = {3}

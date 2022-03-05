@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialIcons'
 import firebase from 'firebase/compat'
 
-import { fetchUser, fetchUserPosts, fetchUserFollowing } from '../redux/actions/index';
+import { fetchUser, fetchUserPosts, fetchUserFollowing, clearData } from '../redux/actions/index';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
@@ -23,6 +23,7 @@ import MapPage from './main/MapPage';
 
 export class Main extends Component {
     componentDidMount() {
+        this.props.clearData();
         this.props.fetchUser();
         this.props.fetchUserPosts();
         this.props.fetchUserFollowing();
@@ -82,7 +83,7 @@ export class Main extends Component {
 const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser
 })
-const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserPosts, fetchUserFollowing}, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({fetchUser, fetchUserPosts, fetchUserFollowing, clearData}, dispatch);
 
 
 
