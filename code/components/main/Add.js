@@ -72,12 +72,13 @@ export default function Add({navigation}) {
             ? Camera.Constants.Type.front
             : Camera.Constants.Type.back
         );
-      }}>
+      }}
+      color='#D2B48C'>
       </Button>
 
-      <Button title="Take Picture" onPress={() => takePicture()}/>
-      <Button title="Pick Image from Gallery" onPress={() => pickImage()}/>
-      <Button title="Save" onPress={() => navigation.navigate('Save', {image})}/>
+      <Button title="Take Picture" onPress={() => takePicture()} color='#D2B48C'/>
+      <Button title="Pick Image from Gallery" onPress={() => pickImage()} color = '#D2B48C'/>
+      <Button title="Save" onPress={() => navigation.navigate('Save', {image})} color='#D2B48C'/>
       {image && <Image source={{uri: image}} style={{flex: 1}}/>} 
     </View>
   );

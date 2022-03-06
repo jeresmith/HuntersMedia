@@ -32,7 +32,7 @@ export class Main extends Component {
   render() {
       
     return (
-        <Tab.Navigator initialRouteName='Feed' labeled = {false}>
+        <Tab.Navigator initialRouteName='Feed' labeled = {false} barStyle={{ backgroundColor: '#D2B48C' }}   >
             <Tab.Screen key={Date.now()} name="Feed" component = {FeedScreen}
              options={{ 
                  tabBarIcon: ({color, size}) =>(

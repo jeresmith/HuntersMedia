@@ -32,12 +32,8 @@ export class Register extends Component {
     }
   render() {
     return (
-      <View style = {{backgroundColor: '#90EE90', paddingTop: 50}}>
+      <View style={{paddingTop: 50}}>
         <Text style = {styles.title}>Hunting Grounds</Text>
-        <Image
-        style = {styles.image}
-        source={require("../../assets/adaptive-icon.png")}>
-        </Image>
         <View style={styles.inputBox}>
           <TextInput
           placeholder="username"
@@ -61,8 +57,8 @@ export class Register extends Component {
         <Button
         onPress={() => this.onSignUp()}
         title = "Sign Up"
+        color={'#D2B48C'}
         />
-        <View style={{backgroundColor: '#90EE90', padding: 100 }}></View>
       </View>
     )
   }

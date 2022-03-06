@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function Landing({navigation}) {
   return (
-    <View style = {{ flex: 1, justifyContent: 'center', backgroundColor: '#90EE90'}}>
+    <View style = {{ flex: 1, justifyContent: 'center'}}>
       <Text style = {styles.title}>Hunting Grounds</Text>
         <Image
         style = {styles.image}
@@ -14,12 +14,14 @@ export default function Landing({navigation}) {
         <Text style = {{textAlign: 'center', marginBottom: 10, fontSize: 20}}>New to Hunting Grounds?</Text>
         <Button
             title='Register Here!'
-            onPress={() => navigation.navigate("Register")} />
-        <View style = {{paddingVertical:15}}></View>
+            onPress={() => navigation.navigate("Register")} 
+            color='#D2B48C'/>
+        <View style = {{paddingVertical:5}}></View>
         <Text style = {{textAlign: 'center', marginBottom: 10, fontSize: 20}}>Already have an account?</Text>
         <Button
             title='Login Here!'
-            onPress={() => navigation.navigate("Login")} />
+            onPress={() => navigation.navigate("Login")} 
+            color='#D2B48C'/>
     </View>
   );
 }

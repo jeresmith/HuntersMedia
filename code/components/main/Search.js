@@ -25,7 +25,7 @@ export default function Search(props) {
         })
     }
     return (
-      <View>
+      <View style={{paddingTop: 20}}>
             <TextInput 
               placeholder = "Type Here..."
               onChangeText = {(search) => fetchUsers(search)}

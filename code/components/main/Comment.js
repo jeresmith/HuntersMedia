@@ -110,6 +110,7 @@ const onCommentSend = () => {
                 <Button
                     onPress={() => onCommentSend()}
                     title="Send"
+                    color={'#D2B48C'}
                 />
         </View>
 

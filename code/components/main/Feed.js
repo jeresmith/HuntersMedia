@@ -62,6 +62,7 @@ function Feed(props) {
                                 <Button 
                                   title="Dislike"
                                   onPress={() => onDislikePress(item.user.uid, item.id)}
+                                  color='#D2B48C'
                                 /> 
                                 
                               )  
@@ -70,6 +71,7 @@ function Feed(props) {
                                 <Button 
                                   title="Like"
                                   onPress={() => onLikePress(item.user.uid, item.id)}
+                                  color='#D2B48C'
                                 /> 
                               ) 
                         }
@@ -127,6 +129,7 @@ const styles = StyleSheet.create({
     },
     container: {
       flex: 1,
+      paddingTop: 15,
     }
 
 })
