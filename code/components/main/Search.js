@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import {View, Text, TextInput, FlatList, TouchableOpacity } from 'react-native';
+import {View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
 import firebase from 'firebase/compat';
 import { useLinkProps } from '@react-navigation/native';
@@ -26,10 +26,13 @@ export default function Search(props) {
     }
     return (
       <View style={{paddingTop: 20}}>
+          <View style = {styles.inputBox}>
             <TextInput 
-              placeholder = "Type Here..."
+              placeholder = "Search"
               onChangeText = {(search) => fetchUsers(search)}
             />
+            </View>
+        <View style = {styles.inputBox}>
           <FlatList
                 numColumns={1}
                 horizontal = {false}
@@ -42,8 +45,31 @@ export default function Search(props) {
                     
                 )}
           />
+          </View>
 
       </View>
     )
 }
+
+const styles = StyleSheet.create({
+    image: {
+      aspectRatio: 1/1,
+      alignSelf: 'center',
+      marginBottom: 50,
+      height: 150,
+      width: 150
+    },
+    title: {
+      textAlign: 'center',
+      marginBottom: 30,
+      fontSize: 30,
+      fontWeight: 'bold'
+    },
+    inputBox: {
+      borderColor: '#0f0f0f',
+      borderWidth: 1,
+      margin: 10,
+      padding: 10
+    }
+  })
 
