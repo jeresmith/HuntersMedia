@@ -43,6 +43,7 @@ function Feed(props) {
         .delete()
     }
     return (
+
       <View style={styles.container}>
           <View style={styles.containerGallery}>
               <FlatList
@@ -52,7 +53,7 @@ function Feed(props) {
                   renderItem={({item}) => 
                   (
                       <View style={styles.containerImage}>
-                          <Text style={styles.container}>{item.user.username}</Text>
+                          <Text style={styles.containerText}>{item.user.username}</Text>
                           <Image
                             style={styles.image}
                             source={{uri: item.downloadURL}}
@@ -75,7 +76,7 @@ function Feed(props) {
                                 /> 
                               ) 
                         }
-                          <Text 
+                          <Text style ={styles.comments}
                           onPress={() => 
                             props.navigation.navigate('Comment', {  postId: item.id, uid: item.user.uid })}>
                             View comments...
@@ -91,14 +92,15 @@ function Feed(props) {
 }
 
 const styles = StyleSheet.create({
+  
     topBar: {
       paddingTop: 50,
-      backgroundColor: '#006400'
+      backgroundColor: '#006700'
     },
     row: {
       flex: 1,
       flexDirection: 'row',
-      backgroundColor: '#006400',
+      backgroundColor: '#f4f4f4',
     },
     image: {
         aspectRatio: 1/1,
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
     button: {
       backgroundColor: '#D2B48C',
       paddingEnd: 10,
-      paddingTop: 50
+      paddingTop: 50,
     },
     post: {
       paddingVertical: 10,
@@ -127,9 +129,36 @@ const styles = StyleSheet.create({
     containerImage:{
       flex: 1/3
     },
+    comments: {
+      flex: 1,
+      paddingTop: 15,
+      marginTop: 4,
+      fontWeight: 'bold',
+      fontSize: 15,
+      backgroundColor: "#fff",
+      paddingBottom: 10,
+      paddingLeft: 5,
+      shadowColor: '#006700'
+
+    },
     container: {
       flex: 1,
       paddingTop: 15,
+      marginTop: 10,
+      fontWeight: 'bold',
+      paddingLeft: 10,
+      paddingRight: 10
+    },
+    containerText: {
+      flex: 1,
+      paddingTop: 15,
+      marginTop: 10,
+      fontWeight: 'bold',
+      paddingLeft: 10,
+      fontSize: 20,
+      borderRadius: 10,
+      backgroundColor: "#fff",
+
     }
 
 })
