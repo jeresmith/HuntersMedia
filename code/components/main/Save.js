@@ -82,7 +82,7 @@ export default function Save(props)
             onChangeText={(caption) => setCaption(caption)}
         />
 
-        <Button title="Save" onPress={() => uploadImage()} color='#D2B48C'/>
+        <Button title="Upload" onPress={() => uploadImage()} color='#D2B48C'/>
     </View>
   )
 }

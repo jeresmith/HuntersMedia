@@ -63,7 +63,6 @@ export default function Add({navigation}) {
           type={type}
           ratio={'1:1'}/>
       </View>
-
       <Button
       title="Flip Image"
       onPress={() => {
@@ -78,8 +77,8 @@ export default function Add({navigation}) {
 
       <Button title="Take Picture" onPress={() => takePicture()} color='#D2B48C'/>
       <Button title="Pick Image from Gallery" onPress={() => pickImage()} color = '#D2B48C'/>
-      <Button title="Save" onPress={() => navigation.navigate('Save', {image})} color='#D2B48C'/>
-      {image && <Image source={{uri: image}} style={{flex: 1}}/>} 
+      <Button title="Upload" onPress={() => navigation.navigate('Upload', {image})} color='#D2B48C'/>
+      {image && <Image source={{uri: image}} style={{flex: 1}}/>}
     </View>
   );
 }

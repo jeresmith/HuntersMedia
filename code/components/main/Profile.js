@@ -90,8 +90,8 @@ function Profile(props) {
         <View style={styles.container}>
             
             <View style = {styles.userInfo}>
-                <Text> {user.username} </Text>
-                <Text> {user.email} </Text>
+                <Text style={{fontSize: 20}}> {user.username} </Text>
+                <Text style={{fontSize: 15}}> {user.email} </Text>
            
 
                 {props.route.params.uid !== firebase.auth().currentUser.uid ? (

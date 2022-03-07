@@ -54,11 +54,13 @@ export class Register extends Component {
           />
         </View>
         <View style={{padding: 20}}></View>
+        <View style={styles.button}> 
         <Button
         onPress={() => this.onSignUp()}
         title = "Sign Up"
         color={'#D2B48C'}
         />
+        </View>
       </View>
     )
   }
@@ -83,6 +85,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     margin: 10,
     padding: 10
+  },
+  button: {
+    marginHorizontal: 50,
   }
 })
 
