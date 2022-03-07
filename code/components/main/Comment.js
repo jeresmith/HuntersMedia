@@ -88,7 +88,7 @@ const onCommentSend = () => {
 }
 
   return (
-    <View>
+    <View style={styles.container}>
         <FlatList
             numColumns={1}
             horizontal={false}
@@ -100,16 +100,16 @@ const onCommentSend = () => {
                         {item.user.username}
                     </Text>
                 : null}
-                    <Text style = {styles.container}
+                    <Text style = {styles.comments}
                     >{item.text}</Text>
                 </View>
             )}
         />
-
+        
         <View>
             <TextInput
-                
-                placeholder='Comment..'
+                style={styles.placeHold}
+                placeholder='Add a Comment'
                 onChangeText={(text) => setText(text)} />
                 <Button
                     onPress={() => onCommentSend()}
@@ -124,6 +124,10 @@ const onCommentSend = () => {
 
 const styles = StyleSheet.create({
 
+
+    placeHold:{
+      fontSize:18
+    },
     topBar: {
       paddingTop: 50,
       backgroundColor: '#006700'
@@ -131,7 +135,8 @@ const styles = StyleSheet.create({
     row: {
       flex: 1,
       flexDirection: 'row',
-      backgroundColor: '#f4f4f4',
+      backgroundColor: '#f4f4f4'
+
     },
     image: {
         aspectRatio: 1/1,
@@ -145,21 +150,26 @@ const styles = StyleSheet.create({
       paddingEnd: 10,
       paddingTop: 50,
     },
+
     post: {
       paddingVertical: 10,
       justifyContent: 'center',
       alignItems: 'center'
     },
+
     containerGallery: {
       flex: 1
     },
+
     image: {
       flex: 1,
       aspectRatio: 1/1
     },
+
     containerImage:{
       flex: 1/3
     },
+
     comments: {
       flex: 1,
       paddingTop: 15,
@@ -169,9 +179,13 @@ const styles = StyleSheet.create({
       backgroundColor: "#fff",
       paddingBottom: 10,
       paddingLeft: 5,
-      shadowColor: '#006700'
+      shadowColor: '#006700',
+      borderColor: '#000000',
+      borderRadius: 100,
+      width: 400
 
     },
+
     container: {
       flex: 1,
       paddingTop: 15,
@@ -180,16 +194,18 @@ const styles = StyleSheet.create({
       paddingLeft: 10,
       paddingRight: 10
     },
+
     containerText: {
       flex: 1,
       paddingTop: 15,
       marginTop: 10,
       fontWeight: 'bold',
       paddingLeft: 10,
+      paddingBottom: 10,
       fontSize: 20,
       borderRadius: 10,
-    
-      backgroundColor: "#fff",
+      width: 150,
+      backgroundColor: "#B0C4DE"
 
     }
 
