@@ -83,9 +83,9 @@ export class App extends Component {
         return (
             <NavigationContainer>
                 <Stack.Navigator initialRouteName="Landing">
-                    <Stack.Screen name= "Landing" component={LandingScreen} options={{HeaderShown: false}} />
-                    <Stack.Screen name= "Register" component={RegisterScreen}/>
-                    <Stack.Screen name= "Login" component={LoginScreen}/>
+                    <Stack.Screen name= "Landing" component={LandingScreen} options={{headerShown: false}} />
+                    <Stack.Screen name= "Register" component={RegisterScreen} options={{headerShown: false}}/>
+                    <Stack.Screen name= "Login" component={LoginScreen} options={{headerShown: false}}/>
                 </Stack.Navigator>
             </NavigationContainer>
         );
@@ -94,9 +94,9 @@ export class App extends Component {
         <Provider store = {store}>
             <NavigationContainer>
                 <Stack.Navigator initialRouteName="Main">
-                    <Stack.Screen name= "Main" component={MainScreen} options={{HeaderShown: false}} />
+                    <Stack.Screen name= "Main" component={MainScreen} options={{headerShown: false}} />
                     <Stack.Screen name= "Add" component={AddScreen} navigation={this.props.navigation}  />
-                    <Stack.Screen name= "Save" component={SaveScreen} navigation={this.props.navigation}/>
+                    <Stack.Screen name= "Upload" component={SaveScreen} navigation={this.props.navigation}/>
                     <Stack.Screen name= "Comment" component={CommentScreen} navigation={this.props.navigation}/>
 
                 </Stack.Navigator> 

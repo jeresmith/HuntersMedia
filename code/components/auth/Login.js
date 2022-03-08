@@ -27,12 +27,8 @@ export class Login extends Component {
     }
   render() {
     return (
-      <View style={{paddingTop: 50, backgroundColor: '#90EE90'}}>
+      <View style={{paddingTop: 50}}>
           <Text style = {styles.title}>Hunting Grounds</Text>
-          <Image
-          style = {styles.image}
-          source={require("../../assets/adaptive-icon.png")}>
-          </Image>
           <View style = {styles.inputBox}>
             <TextInput
             placeholder="email"
@@ -47,11 +43,13 @@ export class Login extends Component {
             />
           </View>
           <View style={{padding: 20}}></View>
+          <View style={styles.button}>
           <Button
           onPress={() => this.onSignUp()}
           title = "Sign In"
+          color={'#D2B48C'}
           />
-          <View style={{backgroundColor: '#90EE90', padding: 100 }}></View>
+          </View>
       </View>
     )
   }
@@ -76,6 +74,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     margin: 10,
     padding: 10
+  },
+  button: {
+    marginHorizontal: 50,
   }
 })
 
